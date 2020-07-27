@@ -1,0 +1,28 @@
+:root {
+    --black-color: #000; // 0, 0, 0
+    --lighter-black-color: #101010; // 16, 16, 16
+    --darker-white-color: #f8f8f8; // 248, 248, 248
+    --white-color: #fff; // 255, 255, 255
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+main {
+    flex: 1;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0 0 1rem 0;
+}
