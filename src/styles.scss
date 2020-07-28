@@ -1,10 +1,10 @@
-@import 'styles/_base';
-@import 'styles/_utilities';
+@import "styles/_base";
+@import "styles/_utilities";
 
 body {
     background-color: var(--darker-white-color);
     color: var(--lighter-black-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;

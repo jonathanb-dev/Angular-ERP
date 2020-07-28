@@ -1,3 +1,5 @@
+@import "_variables";
+
 .page-wrapper {
     display: flex;
     flex-direction: column;
@@ -8,16 +10,16 @@
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
-    @media (min-width: 576px) {
-        max-width: 540px;
+    @media (min-width: $mobile-landscape-breakpoint) {
+        max-width: $mobile-landscape-max-width;
     }
-    @media (min-width: 768px) {
-        max-width: 720px;
+    @media (min-width: $tablet-breakpoint) {
+        max-width: $tablet-max-width;
     }
-    @media (min-width: 992px) {
-        max-width: 930px;
+    @media (min-width: $tablet-landscape-breakpoint) {
+        max-width: $tablet-landscape-max-width;
     }
-    @media (min-width: 1200px) {
-        max-width: 1125px;
+    @media (min-width: $computer-breakpoint) {
+        max-width: $computer-max-width;
     }
 }
