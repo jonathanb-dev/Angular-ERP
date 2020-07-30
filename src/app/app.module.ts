@@ -11,6 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+
 // Pages
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -25,6 +28,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { CopyrightComponent } from './layouts/copyright/copyright.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +36,15 @@ const appRoutes: Routes = [
     component: EmptyLayoutComponent,
     children: [
       { path: '', component: HomePageComponent, pathMatch: 'full' }
+    ]
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardPageComponent }
     ]
   },
   { path: '**', component: NotFoundPageComponent }
@@ -49,7 +62,8 @@ const appRoutes: Routes = [
     FooterComponent,
     CopyrightComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    DashboardPageComponent
   ],
   imports: [
     BrowserModule,
