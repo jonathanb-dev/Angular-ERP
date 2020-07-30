@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 // Services
+import { NotificationService } from '../../../services/notification.service';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitting: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private notificationService: NotificationService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.initializeLoginForm();
@@ -30,11 +34,11 @@ export class LoginFormComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    console.log(this.loginForm.value);
+
     this.authService.login(this.loginForm.value).subscribe(next => {
-      console.log('logged in');
+      this.notificationService.showSuccess('logged in!');
     }, error => {
-      console.log('error');
+      this.notificationService.showSuccess('An error occured while logging in: ' + error);
     });
   }
 }
