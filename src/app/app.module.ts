@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 // Guards
+import { IsLoggedInGuard } from './guards/is-logged-in.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 // Pages
@@ -35,7 +36,14 @@ const appRoutes: Routes = [
     path: '',
     component: EmptyLayoutComponent,
     children: [
-      { path: '', component: HomePageComponent, pathMatch: 'full' }
+      {
+        path: '',
+        component: HomePageComponent,
+        children: [
+          { path: '', redirectTo: 'login', pathMatch: 'full' },
+          { path: 'login', component: LoginComponent, canActivate: [IsLoggedInGuard] }
+        ]
+      }
     ]
   },
   {
@@ -43,7 +51,6 @@ const appRoutes: Routes = [
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardPageComponent }
     ]
   },

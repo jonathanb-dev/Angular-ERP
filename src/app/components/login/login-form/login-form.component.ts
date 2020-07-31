@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     this.initializeLoginForm();
   }
 
@@ -34,13 +34,11 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.loginForm.valid) {
       return;
     }
-    this.authService.login(this.loginForm.value);
-    this.router.navigateByUrl(this.returnUrl);
-    return;
+    
     this.isSubmitting = true;
     this.authService.login(this.loginForm.value).subscribe(next => {
       this.router.navigateByUrl(this.returnUrl);

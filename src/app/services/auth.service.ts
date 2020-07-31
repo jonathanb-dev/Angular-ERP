@@ -9,13 +9,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthenticated: boolean = false;
-
   constructor(private http: HttpClient) { }
 
   login(model: any) {
-    this.isAuthenticated = true;
-    return;
     return this.http.post(environment.apiUrl + 'auth/login', model)
       .pipe(
         map((response: any) => {
@@ -23,9 +19,12 @@ export class AuthService {
           
           if (token) {
             localStorage.setItem('token', token);
-            this.isAuthenticated = true;
           }
         })
       );
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
   }
 }
