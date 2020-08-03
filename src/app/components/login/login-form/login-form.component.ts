@@ -38,6 +38,9 @@ export class LoginFormComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
+    this.authService.login(this.loginForm.value);
+    this.router.navigateByUrl(this.returnUrl);
+    return;
     
     this.isSubmitting = true;
     this.authService.login(this.loginForm.value).subscribe(next => {
