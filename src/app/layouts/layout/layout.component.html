@@ -1,5 +1,44 @@
-<app-header></app-header>
 <main>
-    <router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="onToggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="mr-auto">
+                <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
+                <button mat-button [matMenuTriggerFor]="modulesMenu">Modules</button>
+            </div>
+            <button mat-icon-button>
+                <mat-icon matBadge="10" matBadgeColor="warn">notifications</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    
+    <mat-menu #modulesMenu>
+        <ng-template matMenuContent>
+            <a mat-menu-item [routerLink]="['/customers']">Customers</a>
+            <a mat-menu-item [routerLink]="['/suppliers']">Suppliers</a>
+            <a mat-menu-item [routerLink]="['/products']">Products</a>
+            <a mat-menu-item [routerLink]="['/projects']">Projects</a>
+        </ng-template>
+    </mat-menu>
+    <mat-menu #accountMenu>
+        <ng-template matMenuContent>
+            <a mat-menu-item>My account</a>
+            <a mat-menu-item (click)="onLogout()">Log out</a>
+        </ng-template>
+    </mat-menu>
+    
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+            <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </main>
 <app-footer></app-footer>

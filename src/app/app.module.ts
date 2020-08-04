@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -25,8 +26,6 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 
 // Components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layouts/header/header.component';
-import { NavbarComponent } from './layouts/header/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CopyrightComponent } from './layouts/copyright/copyright.component';
 import { LoginComponent } from './components/login/login.component';
@@ -42,8 +41,6 @@ import { ProjectsComponent } from './components/projects/projects.component';
     NotFoundPageComponent,
     HomePageComponent,
     AppComponent,
-    HeaderComponent,
-    NavbarComponent,
     EmptyLayoutComponent,
     LayoutComponent,
     FooterComponent,
@@ -64,6 +61,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSidenavModule,
     MatBadgeModule,
     MatCardModule,
     MatInputModule,
