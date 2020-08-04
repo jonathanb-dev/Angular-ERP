@@ -24,10 +24,10 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
-    this.initializeLoginForm();
+    this.initLoginForm();
   }
 
-  initializeLoginForm(): void {
+  initLoginForm(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(null),
       password: new FormControl(null)

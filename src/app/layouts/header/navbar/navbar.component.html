@@ -27,6 +27,6 @@
 <mat-menu #accountMenu>
     <ng-template matMenuContent>
         <a mat-menu-item>My account</a>
-        <a mat-menu-item>Log out</a>
+        <a mat-menu-item (click)="onLogout()">Log out</a>
     </ng-template>
 </mat-menu>
