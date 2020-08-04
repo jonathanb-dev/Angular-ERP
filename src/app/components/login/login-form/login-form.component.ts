@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Services
 import { NotificationService } from '../../../services/notification.service';
@@ -29,13 +29,17 @@ export class LoginFormComponent implements OnInit {
 
   initLoginForm(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl(null),
-      password: new FormControl(null)
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, Validators.required)
     });
   }
 
+  isLoginFormValid(): boolean {
+    return this.loginForm.valid;
+  }
+
   onSubmit(): void {
-    if (!this.loginForm.valid) {
+    if (!this.isLoginFormValid()) {
       return;
     }
     this.authService.login(this.loginForm.value);
