@@ -30,6 +30,13 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { CopyrightComponent } from './layouts/copyright/copyright.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AccountDetailsComponent } from './components/register/account-details/account-details.component';
+import { AccountDetailsFormComponent } from './components/register/account-details/account-details-form/account-details-form.component';
+import { UserDetailsComponent } from './components/register/user-details/user-details.component';
+import { UserDetailsFormComponent } from './components/register/user-details/user-details-form/user-details-form.component';
+import { UserPreferencesComponent } from './components/register/user-preferences/user-preferences.component';
+import { UserPreferencesFormComponent } from './components/register/user-preferences/user-preferences-form/user-preferences-form.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
@@ -47,6 +54,13 @@ import { ProjectsComponent } from './components/projects/projects.component';
     CopyrightComponent,
     LoginComponent,
     LoginFormComponent,
+    RegisterComponent,
+    AccountDetailsComponent,
+    AccountDetailsFormComponent,
+    UserDetailsComponent,
+    UserDetailsFormComponent,
+    UserPreferencesComponent,
+    UserPreferencesFormComponent,
     DashboardPageComponent,
     CustomersComponent,
     SuppliersComponent,

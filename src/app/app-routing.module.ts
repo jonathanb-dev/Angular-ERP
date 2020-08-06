@@ -15,6 +15,10 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 
 // Components
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AccountDetailsComponent } from './components/register/account-details/account-details.component';
+import { UserDetailsComponent } from './components/register/user-details/user-details.component';
+import { UserPreferencesComponent } from './components/register/user-preferences/user-preferences.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
@@ -31,7 +35,17 @@ const appRoutes: Routes = [
         component: HomePageComponent,
         children: [
           { path: '', redirectTo: 'login', pathMatch: 'full' },
-          { path: 'login', component: LoginComponent, canActivate: [IsLoggedInGuard] }
+          { path: 'login', component: LoginComponent, canActivate: [IsLoggedInGuard] },
+          {
+            path: 'register',
+            component: RegisterComponent,
+            children: [
+              { path: '', redirectTo: 'account-details', pathMatch: 'full' },
+              { path: 'account-details', component: AccountDetailsComponent },
+              { path: 'user-details', component: UserDetailsComponent },
+              { path: 'user-preferences', component: UserPreferencesComponent }
+            ]
+          }
         ]
       }
     ]
