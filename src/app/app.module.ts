@@ -4,17 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-// Angular material
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatIconModule } from '@angular/material/icon';
+import { AngularMaterialModule } from './angular-material.module';
 
 // Pages
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
@@ -81,15 +71,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatBadgeModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatIconModule
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
