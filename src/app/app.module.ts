@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 // Pages
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
 
 // Layouts
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
@@ -37,17 +39,21 @@ import { UserDetailsComponent } from './components/register/user-details/user-de
 import { UserDetailsFormComponent } from './components/register/user-details/user-details-form/user-details-form.component';
 import { UserPreferencesComponent } from './components/register/user-preferences/user-preferences.component';
 import { UserPreferencesFormComponent } from './components/register/user-preferences/user-preferences-form/user-preferences-form.component';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { SuppliersComponent } from './components/suppliers/suppliers.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductsCatalogComponent } from './components/products/products-catalog/products-catalog.component';
+import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
+import { ProductFormComponent } from './components/products/product-form/product-form.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 
 @NgModule({
   declarations: [
+    AppComponent,
     NotFoundPageComponent,
     HomePageComponent,
-    AppComponent,
+    DashboardPageComponent,
+    ProductsPageComponent,
     EmptyLayoutComponent,
     LayoutComponent,
     FooterComponent,
@@ -61,10 +67,12 @@ import { ProjectsComponent } from './components/projects/projects.component';
     UserDetailsFormComponent,
     UserPreferencesComponent,
     UserPreferencesFormComponent,
-    DashboardPageComponent,
     CustomersComponent,
     SuppliersComponent,
     ProductsComponent,
+    ProductsCatalogComponent,
+    ProductDetailsComponent,
+    ProductFormComponent,
     ProjectsComponent
   ],
   imports: [
