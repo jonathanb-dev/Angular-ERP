@@ -2,9 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+
+// Interceptors
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 // Pages
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
@@ -73,7 +76,13 @@ import { ProjectsComponent } from './components/projects/projects.component';
     BrowserAnimationsModule,
     AngularMaterialModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
