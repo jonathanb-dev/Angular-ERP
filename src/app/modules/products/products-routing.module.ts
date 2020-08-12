@@ -20,7 +20,7 @@ const productsRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'products',
+        path: '', // Lazy loading
         component: ProductsPageComponent,
         children: [
           { path: '', redirectTo: 'catalog', pathMatch: 'full' },

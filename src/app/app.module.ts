@@ -7,12 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Custom modules
 import { AngularMaterialModule } from './angular-material.module';
+import { CoreModule } from './modules/core/core/core.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ProductsModule } from './modules/products/products.module';
-
-// Interceptors
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 // Layouts
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
@@ -42,16 +40,10 @@ import { CopyrightComponent } from './layouts/copyright/copyright.component';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    CoreModule,
     AuthenticationModule,
     DashboardModule,
     ProductsModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent]
 })

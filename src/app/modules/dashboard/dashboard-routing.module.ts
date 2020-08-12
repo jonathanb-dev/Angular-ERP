@@ -17,7 +17,7 @@ const dashboardRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'dashboard',
+        path: '', // Lazy loading
         component: DashboardPageComponent
       }
     ]
