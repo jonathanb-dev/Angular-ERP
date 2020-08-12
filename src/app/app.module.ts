@@ -41,9 +41,7 @@ import { CopyrightComponent } from './layouts/copyright/copyright.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     CoreModule,
-    AuthenticationModule,
-    DashboardModule,
-    ProductsModule
+    AuthenticationModule
   ],
   bootstrap: [AppComponent]
 })
