@@ -1,16 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 // Custom modules
-import { AngularMaterialModule } from './angular-material.module';
 import { CoreModule } from './modules/core/core/core.module';
+import { SharedModule } from './modules/shared/shared/shared.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { ProductsModule } from './modules/products/products.module';
 
 // Layouts
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
@@ -35,11 +31,9 @@ import { CopyrightComponent } from './layouts/copyright/copyright.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule,
+    AppRoutingModule,
+    SharedModule,
     CoreModule,
     AuthenticationModule
   ],

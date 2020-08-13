@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 
 // Custom modules
+import { SharedModule } from '../shared/shared/shared.module';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 // Pages
 import { AuthenticationPageComponent } from './pages/authentication-page/authentication-page.component';
@@ -20,10 +18,8 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
     LoginFormComponent
   ],
   imports: [
-    RouterModule,
-    AuthenticationRoutingModule,
-    AngularMaterialModule,
-    ReactiveFormsModule
+    SharedModule,
+    AuthenticationRoutingModule
   ]
 })
 export class AuthenticationModule { }
