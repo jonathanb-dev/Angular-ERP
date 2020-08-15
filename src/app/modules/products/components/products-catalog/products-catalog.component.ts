@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+
+import { merge } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 // Angular material
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
 // Services
 import { ProductsService } from 'src/app/services/products.service';
 
 // Models
-import { PaginatedResult } from 'src/app/models/pagination';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -16,11 +18,16 @@ import { Product } from 'src/app/models/product';
   templateUrl: './products-catalog.component.html',
   styleUrls: ['./products-catalog.component.scss']
 })
-export class ProductsCatalogComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'price'];
-  dataSource: MatTableDataSource<Product>;
+export class ProductsCatalogComponent implements OnInit, AfterViewInit {
+  isFetchingProducts: boolean = false;
+  displayedColumns: string[] = ['id', 'price', 'actions'];
+  itemsPerPage: number = 20;
+  itemsPerPageOptions: number[] = [10, 20, 30, 40, 50];
+  products: Product[] = [];
+  totalItems: number = 0;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private productsService: ProductsService) { }
 
@@ -28,18 +35,37 @@ export class ProductsCatalogComponent implements OnInit {
     this.fetchProducts();
   }
 
-  initTable(products: Product[]): void {
-    this.dataSource = new MatTableDataSource<Product>(products);
-    this.setPaginator();
-  }
+  ngAfterViewInit(): void {
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0); // Reset current page number after sort
+    
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        switchMap(() => {
+          this.isFetchingProducts = true;
+          return this.productsService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize);
+        }),
+        map(paginatedResult => {
+          this.isFetchingProducts = false;
+          this.totalItems = paginatedResult.pagination.totalItems;
 
-  setPaginator(): void {
-    this.dataSource.paginator = this.paginator;
+          return paginatedResult.result;
+        })
+      )
+      .subscribe(products => this.products = products);
   }
 
   fetchProducts(): void {
-    this.productsService.getProducts().subscribe((data: PaginatedResult<Product[]>) => {
-      this.initTable(data.result);
-    });
+    this.isFetchingProducts = true;
+    this.productsService.getProducts(1, this.itemsPerPage)
+      .pipe(
+        map(paginatedResult => {
+          this.isFetchingProducts = false;
+          this.totalItems = paginatedResult.pagination.totalItems;
+          return paginatedResult.result;
+        })
+      )
+      .subscribe(products => {
+        this.products = products;
+      });
   }
 }

@@ -23,6 +23,16 @@
         max-width: $computer-max-width;
     }
 }
+.grid {
+    display: grid;
+}
+.flex {
+    display: flex;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
 .mr-auto {
     margin-right: auto;
 }

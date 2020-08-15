@@ -1,15 +1,31 @@
 <div>
-    <table mat-table [dataSource]="dataSource">
+    <mat-spinner *ngIf=isFetchingProducts></mat-spinner>
+</div>
+<div>
+    <table mat-table [dataSource]="products" matSort>
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>Id.</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id.</th>
             <td mat-cell *matCellDef="let product">{{ product.id }}</td>
         </ng-container>
         <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
             <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let product">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <a mat-menu-item [routerLink]="['/products', product.id, 'edit']">Edit</a>
+                    <a mat-menu-item>Set to inactive</a>
+                    <a mat-menu-item>Delete</a>
+                </mat-menu>
+            </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="totalItems" [pageSize]="itemsPerPage" [pageSizeOptions]="itemsPerPageOptions" showFirstLastButtons></mat-paginator>
 </div>

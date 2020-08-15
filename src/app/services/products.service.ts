@@ -34,6 +34,7 @@ export class ProductsService {
           if (response.headers.get('Pagination')) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
+          
           return paginatedResult;
         })
       );
